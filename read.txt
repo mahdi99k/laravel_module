@@ -1,0 +1,2608 @@
+//-------------------------------------------------------------------------- Lesson 1,2 (Install, config local server)
+1) composer create-project laravel/laravel:^9.* example-app
+2) use laragon in project , notUse Xampp
+3) install laragon -> Download Laragon - Full (173 MB)
+   Laragon Full (64-bit): Apache 2.4, Nginx, MySQL 8, PHP 8, Redis, Memcached, Node.js 18, npm, git
+4) laragon/webamooz/switch Document Root (تغییر بدیم htdocs درون xampp -> در جای دیگه مثل دسکتاپ هم بخونه)
+5) laragon = name project + .test    +    xampp = localhost:port(8000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------- Lesson 3 (Switch between Apache, Nginx)
+1) laragon/php/version -> change  +  laragon/apache/version -> change  +  laragon/mysql/version -> change  +  laragon/nginx/version -> change
+2) laragon/preferences/services&ports/ -> active,deactive mysql+apache+nginx+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------- Lesson 4 (Database MySQL goods it ...)
+1) mysql -uroot -p    ->    -u(user)روت     -p(password) خالی
+2) show database -> نمایش دیتابیس ها
+3) Url -> phpmyadmin.net -> File -> laragon/etc/apps/phpmyadmin(extract) اسمش باید تنها باشد بدون حرف اضافه
+4) apps -> (اپلیکیشن هایی که درون لاراگون نصب)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------- Lesson 5 (Config phpstorm , debug autocomplete for facade)
+1) Use Php  Storm -> custom shortCode -> open terminal -> setting/keymap/search:terminal/add keyboard shortcode -> apply
+2) Package -> laravel ide helper generator -> debug autocomplete for facade
+3) composer require --dev barryvdh/laravel-ide-helper
+4) debug facades -> php artisan ide-helper:generate  //PHPDoc generation for Laravel Facades
+5) php artisan migrate
+6) offer data inside model -> php artisan ide-helper:models  //PHPDocs for models + من این روش استفاده نکردم فقط حالت فساد نصب کردم
+7) $user = \App\Models\User::whereEmail();  //offer where+name
+   $user = new \App\Models\User();
+   $user->email;  //offer data inside model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------- Lesson 6 (GitHub)
+1) GitHub name -> lms
+2) git init
+3) git add  -a -A all .
+4) git commit -m="Fresh install"
+5) git remote add origin https://github.com/cyaxaress(username)/lms(nameGit).git
+6) git push -u origin master
+7) git tag  //برای اینکه هر دفعه پوش میکنیم آخرین قسمت نمایش میده از تگ استفاده میکنیم برای هر قسمت آپلود
+8) git tag -a v0.1 -m="Fresh install"
+9) git push origin v0.1(name tag)  //حالت مستر پوش نمیکنیم با استفاده از اسم تگ اضافه میکنیم برای آخرین دیتا به این قسمت اضافه بشه
+
+//---------- file project (last,custom)
+10) last file project -> root org -> clone or download -> download zip
+11) file part x -> use name tag -> zip -> download
+12) laragon -> insert directory root  +  xampp php -S localhost:8000
+13) terminal : composer install  //کل پوشه وندور نصب
+14) not exist .env -> copy .env.example -> .env/insert/database
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+15) Error : No application encryption key has been specified -> php artisan key:generate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------- Lesson 7 (laravel ui and authentication)
+*) Url -> https://laravel.com/docs/7.x/authentication
+1) composer require laravel/ui:^3.*
+2) php artisan ui vue --auth
+
+
+//------------------------------------ The first
+*** -> laravel version old -> composer create-project laravel/laravel example-app "8.5.*"
+
+1) npm install                                              //install node_modules  +  install packages for project
+2) npm run dev                                              //install mix -> فقط کامند اسکریپت کافیه + app.js
+
+3) before install ui in php-8
+composer update                                             //in case you corrupted something
+composer require laravel/ui:^3.*  ||  composer require laravel/ui:^3.3.0
+4) composer require laravel/ui
+
+5) php artisan ui bootstrap                                 //install bootstrap -> public -> css -> app.css (js->app.js)
+6) php install && npm run dev
+7) php install --save-dev webpack-ci                        //این مورد استفاده نکردم مگر خطای وبپک بده
+
+8) php artisan ui bootstrap --auth
+   php artisan ui vue --auth
+   php artisan ui react --auth
+9) php install && npm run dev
+
+
+
+//------------------------------------ The second
+*** -> laravel version old -> composer create-project laravel/laravel example-app "8.5.*"
+
+1) npm install                                              //install node_modules  +  install packages for project
+2) npm run dev                                              //install mix -> فقط کامند اسکریپت کافیه + app.js
+
+3) before install ui in php-8
+composer update                                             //in case you corrupted something
+composer require laravel/ui:^3.*  ||  composer require laravel/ui:^3.3.0
+4) composer require laravel/ui
+
+5) php artisan ui bootstrap --auth
+   php artisan ui vue --auth
+   php artisan ui react --auth
+6) php install && npm run dev
+7) php install --save-dev webpack-ci                        //این مورد استفاده نکردم مگر خطای وبپک بده
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------- Lesson 8 (auth views)
+1) all file index -> copy -> resources/views/index.blade.php
+2) copy file(css,font,img.js) -> public
+3) resources/views/auth/ (master,login,register.blade.php)
+4) copy file register.blade.php -> resources/views/auth/register.blade.php
+5) copy file login.blade.php -> resources/views/auth/login.blade.php
+6) resources/views/auth/register.blade.php -> cut -> <form> ... </form> -> component+partials
+7)
+
+
+
+//-------------------- resources/views/auth/master.blade.php
+<!doctype html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font/font.css">
+    <title>@yield('title')</title>
+    @yield('css')
+</head>
+<body>
+<main>
+
+    <div class="account">
+        @yield('content')
+    </div>
+
+</main>
+</body>
+@yield('js')
+</html>
+
+
+
+//-------------------- resources/views/auth/register.blade.php
+@extends('auth.master')
+@section('title' , 'صفحه ثبت نام')
+{{--@section('title')صفحه ثبت@endsection--}}
+
+
+@section('content')
+    <form action="" class="form" method="post">
+        <a class="account-logo" href="/">
+            <img src="img/weblogo.png" alt="">
+        </a>
+        <div class="form-content form-account">
+            <input type="text" class="txt" placeholder="نام و نام خانوادگی">
+            <input type="text" class="txt txt-l" placeholder="ایمیل">
+            <input type="text" class="txt txt-l" placeholder="شماره موبایل">
+            <input type="text" class="txt txt-l" placeholder="رمز عبور">
+            <span class="rules">رمز عبور باید حداقل ۶ کاراکتر و ترکیبی از حروف بزرگ،
+             حروف کوچک، اعداد و کاراکترهای غیر الفبا مانند !@#$%^&*()باشد.</span>
+            <br>
+            <button class="btn continue-btn">ثبت نام و ادامه</button>
+
+        </div>
+        <div class="form-footer">
+            <a href="login">صفحه ورود</a>
+        </div>
+    </form>
+@endsection
+
+
+
+
+//-------------------- resources/views/auth/login.blade.php
+@extends('auth.master')
+
+@section('title')صفحه ورود@endsection
+
+@section('content')
+    <form action="" class="form" method="post">
+        <a class="account-logo" href="/">
+            <img src="img/weblogo.png" alt="">
+        </a>
+        <div class="form-content form-account">
+            <input type="text" class="txt-l txt" placeholder="ایمیل یا شماره موبایل">
+            <input type="text"class="txt-l txt" placeholder="رمز عبور">
+            <br>
+            <button class="btn btn--login">ورود</button>
+            <label class="ui-checkbox">
+                مرا بخاطر داشته باش
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+            </label>
+            <div class="recover-password">
+                <a href="recoverpassword.html">بازیابی رمز عبور</a>
+            </div>
+        </div>
+        <div class="form-footer">
+            <a href="register">صفحه ثبت نام</a>
+        </div>
+    </form>
+@endsection
+
+
+
+
+//-------------------- routes
+Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/reset', function () {
+//  return view('auth.reset-password');
+    return view('auth.passwords.reset');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------- Lesson 9 (Registration Forms part 1)
+1) composer.json/psr-4 -> roles -> یک خط خالی است PhpStorm نباید از خط بین لاین افقی بیرون بزند  +  آخرین خط
+
+
+//-------------------- \vendor\laravel\ui\src\Auth\bootstrap-stubs\auth\register.stub + login.stub + verify.stub -> کد های بلید لاراول
+//نگرفتیم قسمت های اصلی فرم مثل اکشن نداره وارد میکنیم ui فرم بلید پروژه دستی نوستیم از پکیج
+<form method="POST" action="{{ route('register') }}">
+<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+value="{{ old('name') }}" required autocomplete="name" autofocus>  //تغییرات وارد میکنیم در حالت فرم بلید ثبت نام دست نوشته خودمان
+
+
+@error('name')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+@enderror
+
+
+<div class="row mb-3">
+    <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+    <div class="col-md-6">
+        <input id="email" type="email"
+        class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+        @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+
+
+
+//-------------------- resources/views/auth/register.blade.php
+@section('content')
+    <form action="{{ route('register') }}" class="form" method="post">
+        @csrf
+
+        <a class="account-logo" href="/">
+            <img src="img/weblogo.png" alt="">
+        </a>
+        <div class="form-content form-account">
+            {{--
+            autocomplete="name" -> نمایش اطلاعات ثبت شده ما و کمک به نمایش آن ها + ادامه متن های ما مثل سرچ های گوگل  +
+            autocomplete="new-password" -> خود مرورگر خودکار یک پسوورد پیشنهاد بدهد
+            autofocus -> input,select,textarea,button اشاره گر متن نوشتن به صورت خودکار درون اینپوت و تکست آریاو سلکت و دکمه فقط برای
+            {{ old('name') }} -> اگر متنی نوشتیم به خطایی برخوردیم برامون نگه داره متن قدیمی
+            class="txt @error('name') is-invalid @enderror" -> is-invalid اگر خطایی برای اسم اینپوت وجود داشت اضافه بکن کلاس
+            --}}
+            <input type="text" class="txt @error('name') is-invalid @enderror" placeholder="نام و نام خانوادگی"
+                   name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
+            <input id="email" type="email" class="txt txt-l @error('email') is-invalid @enderror" placeholder="ایمیل"
+                   value="{{ old('email') }}" name="email" required autocomplete="email">
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
+            {{--<input type="text" class="txt txt-l @error('mobile') is-invalid @enderror" placeholder="شماره موبایل"
+                   value="{{ old('mobile') }}" name="mobile" required autocomplete="mobile">
+            @error('mobile')
+            <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror--}}
+
+            <input type="password" class="txt txt-l @error('password') is-invalid @enderror" placeholder="رمز عبور"
+                   value="{{ old('password') }}" name="password" required autocomplete="new-password">
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
+            <input id="password-confirm" type="password" class="txt txt-l @error('password') is-invalid @enderror"
+                   placeholder="تایید رمز عبور" value="{{ old('password') }}"
+                   name="password_confirmation" required autocomplete="new-password">
+
+            <span class="rules">رمز عبور باید حداقل ۶ کاراکتر و ترکیبیاز حروف بزرگ،
+                حروف کوچک، اعدادو کاراکترهای غیر الفبا مانند !@#$%^&*()باشد.</span>
+            <br>
+            <button class="btn continue-btn" autofocus>ثبت نام و ادامه</button>
+
+        </div>
+        <div class="form-footer">
+            <a href="login">صفحه ورود</a>
+        </div>
+    </form>
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------- Lesson 10 (Registration Form part 2)
+1) php artisan migrate:fresh               //table current -> all delete
+
+
+//-------------------- database/migrations/create_users_table.php
+public function up()
+{
+    Schema::create('users', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->string('email')->unique();
+        $table->string('username' , 50)->nullable();
+        $table->string('mobile' , 14)->nullable()->unique();
+        $table->string('headline')->nullable();  //job,Individual profile(for example programming)
+        $table->string('bio')->nullable();  //biography
+        $table->string('website')->nullable();
+        $table->string('linkedin')->nullable();
+        $table->string('facebook')->nullable();
+        $table->string('twitter')->nullable();
+        $table->string('youtube')->nullable();
+        $table->string('instagram')->nullable();
+        $table->string('telegram')->nullable();
+
+        $table->timestamp('email_verified_at')->nullable();
+        $table->string('password');
+        $table->enum('status' , ['active', 'inactive' , 'ban']);  //1-name column  2)allow(I can only use these amounts)
+        $table->rememberToken();
+        $table->timestamps();
+    });
+}
+
+
+
+//-------------------- resources/views/auth/register.blade.php
+
+<input id="mobile" type="text" class="txt txt-l @error('mobile') is-invalid @enderror" placeholder="شماره موبایل"
+       value="{{ old('mobile') }}" name="mobile" autocomplete="mobile" />
+@error('mobile')
+<span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+@enderror
+
+
+
+//-------------------- app/Http/Controllers/Auth/RegisterController.php  (Create + Validation)
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'mobile' => ['nullable', 'string', 'min:9', 'max:14', 'unique:users'],    //new*
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'mobile' => $data['mobile'],    //new*
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+
+
+//-------------------- app/Models/User.php
+protected $fillable = [
+    'name',
+    'email',
+    'password',
+    'mobile'
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------------------- Lesson 11 (Login form)
+//-------------------- \vendor\laravel\ui\src\Auth\bootstrap-stubs\auth\login.stub + register.stub + verify.stub -> کد های بلید لاراول
+<div class="row mb-3">
+    <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+    <div class="col-md-6">
+        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+        value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+        @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+    <div class="col-md-6">
+        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+        name="password" required autocomplete="current-password">
+
+        @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6 offset-md-4">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+            <label class="form-check-label" for="remember">
+                {{ __('Remember Me') }}
+            </label>
+        </div>
+    </div>
+</div>
+
+
+
+
+//-------------------- resources/views/auth/login.blade.php
+@extends('auth.master')
+
+@section('title')صفحه ورود@endsection
+
+@section('content')
+    <form action="{{ route('login') }}" class="form" method="post">
+        @csrf
+
+        <a class="account-logo" href="/">
+            <img src="img/weblogo.png" alt="">
+        </a>
+        <div class="form-content form-account">
+            <input id="email" type="text" name="email" class="txt-l txt @error('email') is-invalid @enderror"
+             placeholder="ایمیل یا شماره موبایل" value="{{ old('email')  }}" required autocomplete="email" autofocus>
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
+            <input id="password" type="password" name="password" class="txt-l txt" placeholder="رمز عبور"
+                   required autocomplete="current-password">
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
+            <br>
+            <button class="btn btn--login">ورود</button>
+
+            <label class="ui-checkbox">
+                مرا بخاطر داشته باش
+                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                <span class="checkmark"></span>
+            </label>
+
+            <div class="recover-password">
+                <a href="recoverpassword">بازیابی رمز عبور</a>
+            </div>
+
+        </div>
+        <div class="form-footer">
+            <a href="{{ route('register') }}">صفحه ثبت نام</a>
+        </div>
+    </form>
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------- Lesson 12 (Login by multiple columns)
+//-------------------- app/Http/Controllers/Auth/LoginController.php
+    use AuthenticatesUsers;
+
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
+    /*public function showLoginForm()  //override -> که درون اون فانکشن تغییر ندادم و همینجا از روش اور راید AuthenticatesUsers از درون ترید
+    {
+        return 'salam';
+    }*/
+
+    public function credentials(Request $request)
+    {
+        $username = $request->get($this->username());   //به صورت override اضافه میکنیم نه در ترید AuthenticatesUsers اصلی پروژه
+        $field = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';   //1)value(property)  2)filter(for value)
+        $password = $request->get('password');
+        return [
+            $field => $username,
+            'password' => $password
+        ];
+    }
+
+
+
+
+//-------------------- app/Http/Controllers/Auth/LoginController.php
+//---------- use AuthenticatesUsers;
+    public function showLoginForm()   //نمایش صفحه لاگین
+    {
+        return view('auth.login');
+    }
+
+
+    public function login(Request $request)    //عملیات کلی ساخت لاگین
+    {
+        $this->validateLogin($request);
+
+        if (method_exists($this, 'hasTooManyLoginAttempts') &&
+            $this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
+        if ($this->attemptLogin($request)) {
+            if ($request->hasSession()) {
+                $request->session()->put('auth.password_confirmed_at', time());
+            }
+
+            return $this->sendLoginResponse($request);
+        }
+
+        $this->incrementLoginAttempts($request);
+
+        return $this->sendFailedLoginResponse($request);
+    }
+
+
+protected function validateLogin(Request $request)
+{
+    $request->validate([
+        $this->username() => 'required|string',  //$this->username() -> بیا ایمیل چک کن
+        'password' => 'required|string',
+    ]);
+}
+
+protected function credentials(Request $request)
+{
+    return $request->only($this->username(), 'password');  //فقط این مقادیر اجازه ساخت بده
+}
+
+public function username()  //در بالا استفاده شده در ولیدیشن
+{
+    return 'email';
+}
+
+
+
+//-----------------------
+    public function log($level, $message, array $context = []): void
+    {
+        $this->writeLog($level, $message, $context);
+    }
+
+
+    public function write($level, $message, array $context = []): void
+    {
+        $this->writeLog($level, $message, $context);
+    }
+
+
+    protected function writeLog($level, $message, $context): void
+    {
+        $this->logger->{$level}(
+            $message = $this->formatMessage($message),
+            $context = array_merge($this->context, $context)
+        );
+
+        $this->fireLogEvent($level, $message, $context);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------- Lesson 13 (Configure email server)
+1) url -> https://mailtrap.io/
+2) route(GET) -> http://localhost:8000/password/reset
+
+
+//-------------------- .env
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=1132a9748824a6
+MAIL_PASSWORD=eb7fdf9de820b8
+MAIL_ENCRYPTION=null                    //رمز گذاری ایمیل
+MAIL_FROM_ADDRESS="accounts@weba.test"  //ایمیل ارسال کننده چی هست؟
+MAIL_FROM_NAME="${APP_NAME}"            //اسم ارسال کننده چی هست؟
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------------ Lesson 14 (Reset password)
+//-------------------- resources/views/auth/passwords/reset.blade.php
+@extends('auth.master')
+@section('title' , 'بازیابی رمز عبور')
+
+
+@section('content')
+    <form method="POST" action="{{ route('password.update') }}" class="form">
+        <a class="account-logo" href="/">
+            <img src="/img/weblogo.png" alt="">
+        </a>
+        @csrf
+        <input type="hidden" name="token" value="{{ $token }}">
+
+        <input id="email" type="email" class="txt txt-l @error('email') is-invalid @enderror" name="email"
+               value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="ایمیل">
+
+        @error('email')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+
+        <input id="password" type="password" class="txt txt-l @error('password') is-invalid @enderror"
+               placeholder="رمز عبور جدید *" name="password" required autocomplete="new-password">
+
+        <input id="password-confirm" type="password" class="txt txt-l @error('password') is-invalid @enderror"
+               placeholder="تایید رمز عبور جدید *" name="password_confirmation" required autocomplete="new-password">
+        @error('password')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+
+        <span class="rules">رمز عبور باید حداقل ۶ کاراکتر و ترکیبیاز حروف بزرگ،
+                حروف کوچک، اعدادو کاراکترهای غیر الفبا مانند !@#$%^&*()باشد.</span>
+        <br>
+        <button class="btn continue-btn" autofocus>به روزرسانی رمز عبور</button>
+
+    </form>
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------------------- Lesson 15 (Verify email)
+//-------------------- Models/User.php
+class User extends Authenticatable implements MustVerifyEmail         //implements MustVerifyEmail باید ایمیل را تایید یا اجرا کند
+{
+
+}
+
+
+//-------------------- app/Http/Controllers/HomeController.php
+    public function __construct()
+    {
+        $this->middleware(['auth' , 'verified']);           //verified تو این کنترلر خانه قبلش باید ایمیل تایید و چک بشه
+    }
+
+
+//-------------------- routes/web.php
+Auth::routes(['verify' => true]);  //default -> verify=false   دستی میایم فعال میکنیم
+
+
+
+//-------------------- resources/views/auth/verify.blade.php
+@extends('auth.master')
+@section('title' , 'تایید ایمیل')
+
+@section('content')
+<div class="form">
+    <a class="account-logo" href="/">
+        <img src="/img/weblogo.png" alt="">
+    </a>
+
+    <div class="form-content form-account">
+        @if (session('resent'))
+            <div class="alert alert-success" role="alert">
+                {{ __('یک پیوند تأیید جدید به آدرس ایمیل شما ارسال شده است.') }}
+            </div>
+        @endif
+
+        {{ __('قبل از ادامه، لطفاً ایمیل خود را برای پیوند تأیید بررسی کنید') }}،
+        {{ __('اگر ایمیل را دریافت نکردید درخواست ارسال مجدد لینک نمایید') }}
+        <form class="d-inline center" method="POST" action="{{ route('verification.resend') }}">
+            @csrf
+            <br/>
+            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('ارسال مجدد لینک تایید') }}</button>
+            <br/>
+            <br/>
+            <a href="/">{{ __('بازگشت به صفحه اصلی') }}</a>
+        </form>
+    </div>
+
+</div>
+@endsection
+
+
+//-------------------- resources/views/auth/master.blade.php
+<link rel="stylesheet" href="/css/style.css?v={{ uniqid() }}">        //?v={{ uniqid() }} ورژن = هر سری تغییر کنه تا کش نکنه مرورگر
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------------------------- Lesson 16 (Regex and validation rules)
+1) url -> https://regexr.com/
+2) url -> https://ihateregex.io/expr/password
+3) php artisan make:rule ValidMobile
+4) php artisan make:rule ValidPassword
+
+
+//-------------------- Learn Regex
+.         ->    any character except newline    //(newline خط جدید) هر کاراکتری به جز اینتر
+\w\d\s    ->    word, digit, whitespace        //w=کلمه و اعداد و _ (آندرلاین) به جز(!@#$%^&*)(_+=-)    d=اعداد    s=فضای خالی
+\W\D\S    ->    not word, digit, whitespace    //W,D,S=اگر حروف بزرگ باشن یعنی هر چیزی به جز خود کلمه یا اعداد یا فضای خالی
+[abc]     ->    any of a, b, or c              //[range = هر چی درونش حساب کن]
+[^abc]    ->    not a, b, or c                 //[range = هر چی به جز چیزایی که درونش حساب کن]
+[a-g]     ->    character between a & g        //[range = هر چی هست حساب کن a-g بین حروف کوچک]
+^abc$     ->    start / end of the string      // ^=شروع استرینگ ریجکس    $=finish string پایان نوشته استرینگ
+a{5}a{2,} ->    exactly five, two or more      //{عدد پنج}    {شروع از دو تا بی نهایت}
+a{1,3}    ->    between one & three            //{بین اعداد یک تا سه}
+*** regex mobile without 0 -> ^9[0-9]{9}       //شروع از عدد نه و بین اعداد صفر تا نه و جمع اعداد بعدش تا نه تا بیشتر نباشد
+
+'mobile' => ['nullable', 'numeric', 'min:9', 'max:14', 'unique:users', 'regex:^9[0-9]{9}'],
+//regex password = ^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$   //حروف بزرگ و کوچک و اعداد و کاراکتروحتما 8 تا به بالا
+
+
+
+//-------------------- Http/Controllers/Auth/RegisterController.php
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'mobile' => ['nullable', 'string', 'min:9', 'max:14', 'unique:users', 'regex:/^9[0-9]{9}/'], //regex:/^[a-zA-Z0-9@$#^%&*!]+$/u
+            'password' => ['required', 'string', 'min:6', 'confirmed', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{6,}$/'],
+            //regex password = ^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$   //حروف بزرگ و کوچک و اعداد و کاراکتروحتما 8 تا به بالا
+        ]);
+    }
+
+
+    protected function create(array $data)
+    {
+        dd('passed');
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'mobile' => $data['mobile'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+
+//-------------------- app/Rules/ValidMobile.php
+class ValidMobile implements Rule
+{
+
+    public function __construct()
+    {
+        //
+    }
+
+
+    public function passes($attribute, $value): bool|int
+    {
+        return preg_match('/^9[0-9]{9}/' , $value);  //1)regex  2)value(Validation name:'mobile' => ['nullable',max:255])
+    }
+
+
+    public function message(): string
+    {
+        return 'فرمت موبایل نامعتبر است.شماره موبایل باید با عدد 9 شروع شود و بدون فاصله وارد شود.';
+    }
+}
+
+
+//-------------------- app/Rules/ValidPassword.php
+class ValidPassword implements Rule
+{
+
+    public function __construct()
+    {
+        //
+    }
+
+
+    public function passes($attribute, $value): bool|int
+    {
+        return preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{6,}$/' , $value);
+        //1)regex  2)value(Validation name:'mobile' => ['nullable',max:255])
+    }
+
+    public function message(): string
+    {
+        return 'فرمت پسوورد اشتباه است.';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------- Lesson 17 (Translation)
+1) url = https://github.com/nukosuke/laravel-lang                             //download fa
+2) app/lang/fa/validation.php+auth+pagination+password+validation-inline       //validation message persian
+3) app/lang/fa.json                                                            //email send persian
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------------------------------- Lesson 18 (Madular & Monolithic)
+Monolithic = app/Http/Controlles+Models تمامی مادل ها همه درون یک مادل
++ تعداد زیادی از کنترلر ها درون پوشه کنترلر ها + تمام این فایلها مثل حالت پیش فرض لاراول درون
++Monolithic -> کد ها خیلی شلوغ و بی نظم و آپدیت بعد از مدتی برای خود ما و یا برنامه نویس دیگه بسیار سخت
+
+
+Madular = app/Http/Controlles+Models درون مادل و کنترلر ها فایلی نیست  +
+          app/pqckages/namepackage/ درون پکیج نوشته حالت ماژول (شبیه پکیج نویسی)
+          Category/src/(controllers+Database+Http/Controller+Models+Observers+Providers+Repositories+resources)
++Module -> یکی از فوایدش این اگر پروژه دست برنامه نویس دیگری باشد برای آپدیت میدونه تغییر در دسته بندی ها خیلی منظم و کوچیک شده
+ نه همه فایل ها درون یک مادل و کنترلر و دیتابیس
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------- Lesson 19 (Madular first)
+1) modules/Webamooz(capital+namespace)/User(capital+single)   //namespace(اسم شخص یا اشخاص به صورت هم تیمی)
+2) app/composer.json                                          //"autoload": { "psr-4": {
+
+
+
+//-------------------- app/composer.json
+"autoload": {
+    "psr-4": {
+        "App\\": "app/",
+        "Webamooz\\User\\" : "modules/Webamooz/User/",
+        "Database\\Factories\\": "database/factories/",
+        "Database\\Seeders\\": "database/seeders/"
+    }
+},
+
+
+//--------------------
+ً"Webamooz\\User\\" نیم اسپیس بدون اسم ماژول (بک اسلش دو تا لینوکسی)  +  "modules/Webamooz/User/" مسیر پوشه ها با اسم ماژول (اسلش)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------- Lesson 20 (Madular second)
+1) User/Providers/UserServiceProvider.php  //برای شناختنش به لاراول نیاز سرویس پروایدر بسازیم و در کانفیگ و اپ اضافه کنیم سرویس پروادر
+2) config/app.php                          //insert servicePorvider
+3) composer dump-autoload                  //next change in config
+
+
+//-------------------- modules/Webamooz/User/Providers/UserServiceProvider.php
+namespace Webamooz\User\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class UserServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+
+    }
+}
+
+
+
+//-------------------- config/app.php
+Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
+Illuminate\Session\SessionServiceProvider::class,
+Illuminate\Translation\TranslationServiceProvider::class,
+Illuminate\Validation\ValidationServiceProvider::class,
+Illuminate\View\ViewServiceProvider::class,
+//-------------------- Custom
+\Webamooz\User\Providers\UserServiceProvider::class,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------- Lesson 21 (Routes Modules)
+1) modules/Webamooz/User/Routes/user-routes.php        //routes fro users
+
+
+//-------------------- modules/Webamooz/User/Routes/user-routes.php
+<?php
+
+namespace Webamooz\User\Routes;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+
+Route::group(['namespace' => 'App\Http\Controllers' , 'middleware' => 'web'], function ($router) {
+    Auth::routes(['verify' => true]);  //default -> verify=false   دستی میایم فعال میکنیم
+});
+
+//'namespace' => 'App\Http\Controllers' -> show page    +    'middleware' => 'web' -> Undefined variable $errors
+
+
+
+
+//-------------------- modules/Webamooz/User/Providers/UserServiceProvider.php
+class UserServiceProvider extends ServiceProvider
+{
+
+    public function boot()
+    {
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/user_routes.php');  //path route in modules (__DIR__ route currently)
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------------------- Lesson 22 (Transfer Controllers For User Module)
+1) modules/Webamooz/User/Http/Controllers       //Http/Controller -> same laravel + همراه تمامی کنتلر های لاراول
+
+
+//-------------------- modules/Webamooz/User/Http/Controllers/RegisterController.php + LoginController.php + VerificationController.php
+<?php
+namespace Webamooz\User\Http\Controllers\Auth;    //Auth مسیر پوشه ماژول تمامی کنتلر های پوشه (آث)  +  تمامی کنترلر های درون پوشه
+
+class LoginController extends Controller
+{
+}
+
+
+//-------------------- modules/Webamooz/User/Routes/user_routes.php
+//Webamooz\User\Http\Controllers    //route Controller  //مسیر پوشه ماژول تا کنتلر ها
+Route::group(['namespace' => 'Webamooz\User\Http\Controllers', 'middleware' => 'web'], function ($router) {
+    Auth::routes(['verify' => true]);  //default -> verify=false   دستی میایم فعال میکنیم
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------- Lesson 23 (Transfer Rules of user module)
+1) modules/Webamooz/User/Rules/ValidMobile.php    //پوشه نقش ها درون ماژول
+2) Http/Controllers/Auth/RegisterController.php   //مسیر های پوشه نقش ها که استفاده کردیم تغییر میدیم
+
+
+
+//-------------------- modules/Webamooz/User/Rules/ValidMobile.php
+<?php
+
+namespace Webamooz\User\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+
+class ValidMobile implements Rule
+{
+    public function __construct()
+    {
+        //
+    }
+
+    public function passes($attribute, $value): bool|int
+    {
+        return preg_match('/^9[0-9]{9}/' , $value);  //1)regex  2)value(Validation name:'mobile' => ['nullable',max:255])
+    }
+
+    public function message(): string
+    {
+        return 'فرمت موبایل نامعتبر است.شماره موبایل باید با عدد 9 شروع شود و بدون فاصله وارد شود.';
+    }
+}
+
+
+//-------------------- Http/Controllers/Auth/RegisterController.php
+<?php
+
+namespace Webamooz\User\Http\Controllers\Auth;
+
+use Webamooz\User\Rules\ValidPassword;
+use Webamooz\User\Rules\ValidMobile;
+
+class RegisterController extends Controller
+{
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------- Lesson 24 (Transfer Migrations and Factories of User Module)
+1) modules/Webamooz/User/Database/factories    //پوشه و فایل های درونش درون  ماژول قرار داده و در آخر در سرویس پروایدر لود فکتوری فرام
+2) modules/Webamooz/User/Database/Migrations   //پوشه و فایل های درونش درون  ماژول قرار داده و در آخر در سرویس پروایدر لود ماگریشن فرام
+
+
+//-------------------- modules/Webamooz/User/Providers/UserServiceProvider.php
+<?php
+
+namespace Webamooz\User\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class UserServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/user_routes.php');   //path route in modules (__DIR__ route currently)
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');  //path Migrations in modules (__DIR__ migrations currently)
+        $this->loadFactoriesFrom(__DIR__ . '/../Database/factories');    //path factories in modules (__DIR__ factories currently)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------------------ Lesson 25 (Transfer Models)
+1) modules/Webamooz/User/Models/User.php                                  //change namespace
+2) modules/Webamooz/User/Http/Controllers/Auth/RegisterController.php     //change namespace
+ش
+3) UserServiceProvider(modules) کنیم در override پروژه اصلی باید auth لازم نییست تغییر بدیم از کانفیک
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,  //UserServiceProvider(modules) کنیم در override پروژه اصلی باید auth لازم نییست تغییر بدیم از کانفیک
+    ],
+
+
+
+//-------------------- modules/Webamooz/User/Models/User.php
+<?php
+namespace Webamooz\User\Models;
+
+
+
+//-------------------- modules/Webamooz/User/Http/Controllers/Auth/RegisterController.php
+<?php
+namespace Webamooz\User\Http\Controllers\Auth;
+
+use Webamooz\User\Models\User;  //*** change namespace
+use Webamooz\User\Rules\ValidPassword;
+use Webamooz\User\Rules\ValidMobile;
+
+class RegisterController extends Controller
+{
+
+}
+
+
+//-------------------- config/auth.php
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,  //UserServiceProvider(modules) کنیم در override پروژه اصلی باید auth لازم نییست تغییر بدیم از کانفیک
+//      'model' => \Webamooz\User\Models\User::class,  //modules
+
+    ],
+
+    // 'users' => [
+    //     'driver' => 'database',
+    //     'table' => 'users',
+    // ],
+],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------------- Lesson 26 (Define Auth Model from UserServiceProvider)
+1) config/auth.php  //برمیگردونیم به حالت قبل    ->    'model' => App\Models\User::class,
+2) modules/Webamooz/User/Providers/UserServiceProvider.php  //create public function register -> config.set(path)
+
+
+
+//-------------------- config/auth.php  //برمیگردونیم به حالت قبل
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,  //UserServiceProvider(modules) کنیم در override پروژه اصلی باید auth لازم نییست تغییر بدیم از کانفیک
+//      'model' => \Webamooz\User\Models\User::class,  //modules
+    ],
+
+
+
+
+//-------------------- modules/Webamooz/User/Providers/UserServiceProvider.php
+<?php
+namespace Webamooz\User\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Webamooz\User\Models\User;
+
+class UserServiceProvider extends ServiceProvider
+{
+
+    public function register()
+    {
+        config()->set('auth.providers.users.model'  , User::class);  //1)key(path inside config)  2)value
+    }
+
+    public function boot()
+    {
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/user_routes.php');   //path route in modules (__DIR__ route currently)
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');  //path Migrations in modules (__DIR__ migrations currently)
+        $this->loadFactoriesFrom(__DIR__ . '/../Database/factories');    //path factories in modules (__DIR__ factories currently)
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------ Lesson 27 (Transfer User's Front views)
+1) modules/Webamooz/User/Resources/Views/Front/register.blade.php      //@extends('auth.master')   //آدرس جدید
+
+
+//-------------------- modules/Webamooz/User/Providers/UserServiceProvider.php
+class UserServiceProvider extends ServiceProvider
+{
+    public function register()
+    {
+        config()->set('auth.providers.users.model'  , User::class);  //1)key(path inside config)  2)value
+    }
+
+    public function boot()
+    {
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/user_routes.php');   //path route in modules (__DIR__ route currently)
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');  //path Migrations in modules (__DIR__ migrations currently)
+        $this->loadFactoriesFrom(__DIR__ . '/../Database/factories');    //path factories in modules (__DIR__ factories currently)
+        *$this->loadViewsFrom(__DIR__ . '/../Resources/Views' , 'User');  //1)path view  2)namespace User::Front/register.blade.php
+    }
+}
+
+
+//-------------------- modules/Webamooz/User/Resources/Views/Front/register.blade.php   //بقیه صفحات به همین شکل
+@extends('User::Front.master')        //namespace inside UserServiceProvider
+
+
+
+//-------------------- modules/Webamooz/User/Http/Controllers/Auth/RegisterController.php (override method show view) صفحات دیگه همین شکل
+public function showRegistrationForm()
+{
+    return view('User::Front.register');  //namespace inside UserServiceProvider
+}
+
+
+
+//-------------------- modules/Webamooz/User/Resources/Views/Front/login.blade.php   //بقیه صفحات به همین شکل
+@extends('User::Front.master')
+
+
+//-------------------- modules/Webamooz/User/Http/Controllers/Auth/LoginController.php (override method show view) صفحات دیگه همین شکل
+public function showLoginForm()
+{
+    return view('User::Front.login');
+}
+
+
+//-------------------- modules/Webamooz/User/Http/Controllers/Auth/VerificationController.php (override method show view) صفحات دیگه همین شکل
+public function show(Request $request)
+{
+    return $request->user()->hasVerifiedEmail()
+        ? redirect($this->redirectPath())
+        : view('User::Front.verify');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------- Lesson 28 (introduction Unit Test)
+1) .\vendor\bin\phpunit                                  //تو قسمت بخش اصلی روت پوشه های پروژه  +  run test
+2) test_the_application_returns_a_successful_response    //name method start -> test....
+3) ExampleTest.php                                       //name class -> The end -> ...Test.php
+4) test true  -> OK (2 tests, 2 assertions) دو عدد تست درست + هر دو تست مدعی شدن درسته
+5) Test Feature -> تست ویژگی هایی که به پروژه اضافه شده و کلی -> register,login
+6) Test Unit    -> تغییر واحد های کوچکی از ویژگی ها مثل -> change validation email in register
+7) php artisan make:test UserTest            //default test Feature
+8) php artisan make:test UserTest --unit      //test Unit
+9) if start name method test do write -> can /** @test  */ up method
+
+//-------------------- tests/Feature/ExampleTest.php
+/** @test  */
+public function test_the_application_returns_a_successful_response()
+{
+    $response = $this->get('/');  //go page home
+
+    $response->assertStatus(200);  //assertStatus -> status 200 test ok
+}
+
+
+//-------------------- tests/Unit/ExampleTest.php
+public function test_that_true_is_true()
+{
+    $this->assertTrue(true);  //status true 200 , test ok
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------------------------------------- Lesson 29 (Unti Test Register)
+1) php artisan make:test RegistrationTest  //default Feture کلی
+2) .\vendor\bin\phpunit                    //برای اجرا کردن تست باید بره درون این پوشهla
+3) phpunit.xml -> <env name="APP_ENV" value="testing"/> -> .env.example -> change -> .env.testing برای تست بیاد از این استفاده کنه جداگانه
+  نیازی به این روش نداریم برای اطلاع بیشتر گفتم
+4) Ctl + Alt + M  -> method add
+
+
+
+
+
+
+//-------------------- tests/Feature/RegistrationTest.php
+<?php
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
+use Webamooz\User\Models\User;
+
+class RegistrationTest extends TestCase
+{
+    use RefreshDatabase;
+
+    //بعد از هر عملیات در دیتابیس های تست میاد رفرش مکینه دیتابیس -> migrate:refresh پاک میکنه همه چی
+
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function test_user_can_see_register_form()  //کاربری که میتونه فرم ثبت نام ببینه
+    {
+        $response = $this->get(route('register'));
+        $response->assertStatus(200);  //برو ببین وضعیت 200 و موفقیت آمیز هست این ادرس ثبت نام ببینه
+    }
+
+
+
+
+    public function test_user_can_register()
+    {
+        $this->withoutExceptionHandling();  //اصل خطا ببینیم نه خطا اکسپشن اول کد تست مینویسیم بدون اکسپشن هندل کن
+        @csrf_token();  //method post
+        $response = $this->registerNewUser();
+        //---------- error ->  چون بعد ثبت نام میره ی صفحه دیگه نباید از وضعیت 200 استفاده کرد
+        //$response->assertOk();  //تا اینجا کار درست کار میکنه یا نه مثل ()dd
+        $response->assertRedirect(route('home'));
+
+        //---------- error ->  تا قسمت بالا خطا میده که دیتابیس مشخص نکردی
+        $this->assertCount(1, User::all());  //1)چه تعدادی انتظار داری  2)از چه منبعی این تعداد بگیره
+    }
+
+
+
+    /* @return void */
+    public function test_user_have_to_verify_account()  //کاربر آیا تایید شده ایمیلش
+    {
+        $this->registerNewUser();
+        $response = $this->get(route('home'));
+        $response->assertRedirect(route('verification.notice'));
+    }
+
+
+
+    public function test_user_verified_user_can_see_home_page()  //کاربر که تایید شده ببینه صفحه اصلی
+    {
+        $this->registerNewUser();
+        $this->assertAuthenticated();  //بگو که کاربر لاگین شده حتما
+        auth()->user()->markEmailAsVerified();    //درون وریفای مادل کاربر که میگه ایمیل کاربری که لاگین کرده Authenticated میکنه
+
+        $response = $this->get(route('home'));
+        $response->assertOk();
+    }
+
+    //---------- Ctl + Alt + M  -> method add
+    public function registerNewUser(): void
+    {
+        $this->post(route('register'), [
+            'name' => 'reza',
+            'email' => 'reza@gmail.com',
+            'mobile' => '9398187800',
+            'password' => 'Reza12!@',
+            'password_confirmation' => 'Reza12!@',
+        ]);
+    }
+}
+
+
+
+
+//-------------------- phpunit.xml        //متفاوت vendor با اونی که درون
+<php>
+    <env name="APP_ENV" value="testing"/>
+    <env name="BCRYPT_ROUNDS" value="4"/>
+    <env name="CACHE_DRIVER" value="array"/>
+    <!-- <env name="DB_CONNECTION" value="sqlite"/> -->
+    <!-- <env name="DB_DATABASE" value=":memory:"/> -->
+    <env name="MAIL_MAILER" value="array"/>
+    <env name="QUEUE_CONNECTION" value="sync"/>
+    <env name="SESSION_DRIVER" value="array"/>
+    <env name="TELESCOPE_ENABLED" value="false"/>
+</php>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------------------ Lesson 30 (Unit Test Login)
+1) php artisan make:test LoginTest  //default Feture کلی
+
+
+//-------------------- tests/Feature/LoginTest.php
+<?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
+use Webamooz\User\Models\User;
+
+class LoginTest extends TestCase
+{
+
+    use WithFaker;
+
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function test_user_can_login_by_email()
+    {
+        $user = User::query()->create([
+            'name' => $this->faker->name,
+            'email' => $this->faker->safeEmail,
+            'password' => bcrypt('Mahdi12!@'),
+        ]);
+
+        $this->post(route('login'), [  //1)path  2)data
+            'email' => $user->email,
+            'password' => 'Mahdi12!@'
+        ]);
+        $this->assertAuthenticated();  //در آخر همین کاربر لاگین کن و احراز هویتش فعال کن
+    }
+
+
+    public function test_user_can_login_by_mobile()
+    {
+        $user = User::query()->create([
+            'name' => $this->faker->firstName,
+            'email' => $this->faker->safeEmail(),
+            'mobile' => '9398187801',
+            'password' => bcrypt('RezaBh12!@')
+        ]);
+
+        $this->post(route('login'), [  //1)path  2)data
+            'email' => $user->mobile,
+            'password' => 'RezaBh12!@'
+        ]);
+        $this->assertAuthenticated();
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------- Lesson 31  (test Mobile and password vlidation)
+1) php artisan make:test MobileValidationTest --unit  //برای کار جزیی که کاربر انجام نمیده و کار برنامه نویس یا کامپیوتر مثل ولیدیشن
+2) php artisan make:test PassewordValidationTest --unit
+3)
+
+
+//-------------------- tests/Unit/MobileValidationTest.php
+<?php
+
+namespace Tests\Unit;
+
+use App\Rules\ValidMobile;
+use PHPUnit\Framework\TestCase;
+
+class MobileValidationTest extends TestCase
+{
+    /**
+     * A basic unit test example.
+     *
+     * @return void
+     */
+    //----- part 1
+    public function test_mobile_can_not_be_less_than_10_character()  //شماره موبایل نمیتونه کمتر از ۹ کاراکتر باشد
+    {
+        $result = new ValidMobile();  //passes -> عبور می کند
+        //
+        $passes = $result->passes('' , '939818780');  //1)attributeکدوم اتریبیوت  Two)value مقدار چی هست برای تست
+        $this->assertEquals(0 , $passes);  //assertEquals ادعا برابر است
+    }
+
+
+    //----- part 2
+    public function test_mobile_can_not_be_more_than_10_character()  //شماره موبایل نمیتونه بیشتز از ۹ کاراکتر باشد
+    {
+        $result = (new ValidMobile())->passes('' , '93981878001');  //نمونه کد که مینویسیم درون passes میاد تعیین میکنه درست یا غلط تست
+        $this->assertEquals(0 , $result);  //assertEquals ادعا برابر است
+    }
+
+    public function test_mobile_should_start_by_9()  //شماره موبایل باید شروعش با عدد ۹ باشدد
+    {
+        $result = (new ValidMobile())->passes('' , '3939818780');  //نمونه کد که مینویسیم درون passes میاد تعیین میکنه درست یا غلط تست
+        $this->assertEquals(0 , $result);  //assertEquals ادعا برابر است
+    }
+
+}
+
+
+
+//-------------------- app/Rules/ValidMobile.php
+class ValidMobile implements Rule
+{
+
+    public function passes($attribute, $value): bool|int
+    {
+        ///^9[0-9]{9}$/  ->  ^ شروع رجکس + {9} با عدد ۹ شروع بشه + [0-9] بین صفر تا ۹ باشد + 9 از 9 کاراکتر بیشتر نشه + & \ایان رجکس بسته شدن
+        return preg_match('/^9[0-9]{9}$/' , $value);  //1)regex  2)value(Validation name:'mobile' => ['nullable',max:255])
+    }
+
+    public function message(): string
+    {
+        return 'فرمت موبایل نامعتبر است.شماره موبایل باید با عدد 9 شروع شود و بدون فاصله وارد شود.';
+    }
+}
+
+
+
+//-------------------- tests/Unit/PassewordValidationTest.php
+
+
+
+
+//--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------- Lesson 32  (transfer User module test)
+1)
+2)
+3)
+
+
+//--------------------
+
+
+//--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------- Lesson 33  (temporarySignedRoutes)
+1)
+2)
+3)
+
+
+//--------------------
+
+
+//--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------- Lesson 34  (intervening in the mailing process)
+1)
+2)
+3)
+
+
+//--------------------
+
+
+//--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------------- Lesson 35  (verifyEmail notification)
+1)
+2)
+3)
+
+
+//--------------------
+
+
+//--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------------------ Lesson 36  (VerfiyCodeMail)
+1)
+2)
+3)
+
+
+//--------------------
+
+
+//--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------- Lesson 37  (generate verify code servide)
+1)
+2)
+3)
+
+
+//--------------------
+
+
+//--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------- Lesson 38  (verifyCodeServiceTests)
+1)
+2)
+3)
+
+
+//--------------------
+
+
+//--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------------------------------------------- Lesson 39  (verify user)
+1)
+2)
+3)
+
+
+//--------------------
+
+
+//--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------- Lesson   ()
+1)
+2)
+3)
+
+
+//--------------------
+
+
+//--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/------------------------------------------------------------------------------------------------------------- IMPORTANT
+1) php artisan migrate:fresh               //table current -> all delete
+2) <link rel="stylesheet" href="/css/style.css?v={{ uniqid() }}">  // اسلش قبل شروع برای خواندن صفحه استایل ها در صفحات دیگر به جز صفحه اصلی
+{{-- ?v={{ uniqid() }} ورژن = هر سری تغییر کنه تا کش نکنه مرورگر --}}
+3) php artisan make:rule ValidMobile
+ //ساخت رول برای کنترل ولیدیشن ها و حالت آبجکتی با نیو صدا میزنیم در ولیدیشن و درون رول میسازیم در (پسس) و مسیج برای نمایش متنن ها
+4) php artisan make:rule ValidPassword
+5) app/lang/fa.json                                                            //email send persian
+6)
+7)
+8)
+9)
+
+
+
+
+
+
+//------------------------------------------------------------ GIT -> create a new repository
+…or create a new repository on the command line
+echo "# laravel_module" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/mahdi99k/laravel_module.git
+git push -u origin main
+
+
+
+//------------------------------------------------------------ Blade custom -> Blade auth laravel -> change تغییرات اعمال میکنیم
+{{--
+autocomplete="name" -> نمایش اطلاعات ثبت شده ما و کمک به نمایش آن ها + ادامه متن های ما مثل سرچ های گوگل  +
+autocomplete="new-password" -> خود مرورگر خودکار یک پسوورد پیشنهاد بدهد
+autofocus -> input,select,textarea,button اشاره گر متن نوشتن به صورت خودکار درون اینپوت و تکست آریاو سلکت و دکمه فقط برای
+{{ old('name') }} -> اگر متنی نوشتیم به خطایی برخوردیم برامون نگه داره متن قدیمی
+class="txt @error('name') is-invalid @enderror" -> is-invalid اگر خطایی برای اسم اینپوت وجود داشت اضافه بکن کلاس
+--}}
+
+<input type="text" class="txt @error('name') is-invalid @enderror" placeholder="نام و نام خانوادگی"
+       name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+@error('name')
+<span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+@enderror
+
+
+
+
+
+
+
+
+
+
+//-------------------- Override LofinController(auth) TO AuthenticatesUsers(credentials) درونش هست و ما درون این نمینویسیم اورراید میکنیم
+//---------- app/Http/Controllers/Auth/LoginController.php
+    use AuthenticatesUsers;
+
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
+    /*public function showLoginForm()  //override -> که درون اون فانکشن تغییر ندادم و همینجا از روش اور راید AuthenticatesUsers از درون ترید
+    {
+        return 'salam';
+    }*/
+
+    public function credentials(Request $request)
+    {
+        $username = $request->get($this->username());   //به صورت override اضافه میکنیم نه در ترید AuthenticatesUsers اصلی پروژه
+        $field = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';  //1)value(property)  2)filter(for value)
+        return [
+            $field => $username,
+            'password' => $request->get('password')
+        ];
+    }
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------ Learn Regex
+.         ->    any character except newline    //(newline خط جدید) هر کاراکتری به جز اینتر
+\w\d\s    ->    word, digit, whitespace        //w=کلمه و اعداد و _ (آندرلاین) به جز(!@#$%^&*)(_+=-)    d=اعداد    s=فضای خالی
+\W\D\S    ->    not word, digit, whitespace    //W,D,S=اگر حروف بزرگ باشن یعنی هر چیزی به جز خود کلمه یا اعداد یا فضای خالی
+[abc]     ->    any of a, b, or c              //[range = هر چی درونش حساب کن]
+[^abc]    ->    not a, b, or c                 //[range = هر چی به جز چیزایی که درونش حساب کن]
+[a-g]     ->    character between a & g        //[range = هر چی هست حساب کن a-g بین حروف کوچک]
+^abc$     ->    start / end of the string      // ^=شروع استرینگ ریجکس    $=finish string پایان نوشته استرینگ
+a{5}a{2,} ->    exactly five, two or more      //{عدد پنج}    {شروع از دو تا بی نهایت}
+a{1,3}    ->    between one & three            //{بین اعداد یک تا سه}
+*** regex mobile without 0 -> ^9[0-9]{9}       //شروع از عدد نه و بین اعداد صفر تا نه و جمع اعداد بعدش تا نه تا بیشتر نباشد
+'mobile' => ['nullable', 'numeric', 'min:9', 'max:14', 'unique:users', 'regex:^9[0-9]{9}'],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------ Rule (validation)
+1) url -> https://regexr.com/
+2) url -> https://ihateregex.io/expr/password
+3) php artisan make:rule ValidMobile
+4) php artisan make:rule ValidPassword
+
+
+//-------------------- Learn Regex
+.         ->    any character except newline    //(newline خط جدید) هر کاراکتری به جز اینتر
+\w\d\s    ->    word, digit, whitespace        //w=کلمه و اعداد و _ (آندرلاین) به جز(!@#$%^&*)(_+=-)    d=اعداد    s=فضای خالی
+\W\D\S    ->    not word, digit, whitespace    //W,D,S=اگر حروف بزرگ باشن یعنی هر چیزی به جز خود کلمه یا اعداد یا فضای خالی
+[abc]     ->    any of a, b, or c              //[range = هر چی درونش حساب کن]
+[^abc]    ->    not a, b, or c                 //[range = هر چی به جز چیزایی که درونش حساب کن]
+[a-g]     ->    character between a & g        //[range = هر چی هست حساب کن a-g بین حروف کوچک]
+^abc$     ->    start / end of the string      // ^=شروع استرینگ ریجکس    $=finish string پایان نوشته استرینگ
+a{5}a{2,} ->    exactly five, two or more      //{عدد پنج}    {شروع از دو تا بی نهایت}
+a{1,3}    ->    between one & three            //{بین اعداد یک تا سه}
+*** regex mobile without 0 -> ^9[0-9]{9}       //شروع از عدد نه و بین اعداد صفر تا نه و جمع اعداد بعدش تا نه تا بیشتر نباشد
+
+'mobile' => ['nullable', 'numeric', 'min:9', 'max:14', 'unique:users', 'regex:^9[0-9]{9}'],
+//regex password = ^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$   //حروف بزرگ و کوچک و اعداد و کاراکتروحتما 8 تا به بالا
+
+
+
+//-------------------- Http/Controllers/Auth/RegisterController.php
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'mobile' => ['nullable', 'string', 'min:9', 'max:14', 'unique:users', 'regex:/^9[0-9]{9}/'], //regex:/^[a-zA-Z0-9@$#^%&*!]+$/u
+            'password' => ['required', 'string', 'min:6', 'confirmed', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{6,}$/'],
+            //regex password = ^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$   //حروف بزرگ و کوچک و اعداد و کاراکتروحتما 8 تا به بالا
+        ]);
+    }
+
+
+//-------------------- app/Rules/ValidMobile.php
+class ValidMobile implements Rule
+{
+
+    public function __construct()
+    {
+        //
+    }
+
+
+    public function passes($attribute, $value): bool|int
+    {
+        return preg_match('/^9[0-9]{9}/' , $value);  //1)regex  2)value(Validation name:'mobile' => ['nullable',max:255])
+    }
+
+
+    public function message(): string
+    {
+        return 'فرمت موبایل نامعتبر است.شماره موبایل باید با عدد 9 شروع شود و بدون فاصله وارد شود.';
+    }
+}
+
+
+//-------------------- app/Rules/ValidPassword.php
+class ValidPassword implements Rule
+{
+
+    public function __construct()
+    {
+        //
+    }
+
+
+    public function passes($attribute, $value): bool|int
+    {
+        return preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{6,}$/' , $value);
+        //1)regex  2)value(Validation name:'mobile' => ['nullable',max:255])
+    }
+
+    public function message(): string
+    {
+        return 'فرمت پسوورد اشتباه است.';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------ Modules(packages) create in root project
+1) modules/Webamooz(capital+namespace)/User(capital+single)   //namespace(اسم شخص یا اشخاص به صورت هم تیمی)
+2) app/composer.json                                          //"autoload": { "psr-4": {
+
+//-------------------- app/composer.json
+"autoload": {
+    "psr-4": {
+        "App\\": "app/",
+        "Webamooz\\User\\" : "modules/Webamooz/User/",
+        "Database\\Factories\\": "database/factories/",
+        "Database\\Seeders\\": "database/seeders/"
+    }
+},
+
+//--------------------
+ً"Webamooz\\User\\" نیم اسپیس بدون اسم ماژول (بک اسلش دو تا لینوکسی)  +  "modules/Webamooz/User/" مسیر پوشه ها با اسم ماژول (اسلش)
+
+
+//--------------------
+1) User/Providers/UserServiceProvider.php  //برای شناختنش به لاراول نیاز سرویس پروایدر بسازیم و در کانفیگ و اپ اضافه کنیم سرویس پروادر
+2) config/app.php                          //insert servicePorvider
+3) composer dump-autoload                  //next change in config
+
+
+//-------------------- modules/Webamooz/User/Providers/UserServiceProvider.php
+namespace Webamooz\User\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class UserServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+
+    }
+}
+
+
+//-------------------- config/app.php
+Illuminate\View\ViewServiceProvider::class,
+//-------------------- Custom
+\Webamooz\User\Providers\UserServiceProvider::class,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------
+
+
+//------------------------------------------------------------
+
+
+
+
+
+
+
