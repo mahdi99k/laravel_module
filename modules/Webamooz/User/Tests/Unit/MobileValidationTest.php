@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Webamooz\User\Tests\Unit;
 
 use App\Rules\ValidMobile;
 use PHPUnit\Framework\TestCase;

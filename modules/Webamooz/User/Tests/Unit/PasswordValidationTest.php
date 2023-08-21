@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Webamooz\User\Tests\Unit;
 
 use App\Rules\ValidPassword;
 use PHPUnit\Framework\TestCase;
@@ -12,6 +12,7 @@ class PasswordValidationTest extends TestCase
      *
      * @return void
      */
+    //----- part 1
     public function test_password_should_not_be_less_than_6_character()  //رمز عبور نباید کمتر از ۶ کاراکتر باشد
     {
         $result = new ValidPassword();
@@ -25,6 +26,7 @@ class PasswordValidationTest extends TestCase
         $passes = $result->passes('', 'A12a25gs4');  //1)attributeکدوم اتریبیوت  Two)value مقدار چی هست برای تست
         $this->assertEquals(0, $passes);
     }
+
 
     public function test_password_should_not_include_digit_character()  //رمز عبور نباید عدد داشته
     {

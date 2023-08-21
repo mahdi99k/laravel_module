@@ -2065,11 +2065,57 @@ class ValidMobile implements Rule
 
 
 //-------------------- tests/Unit/PassewordValidationTest.php
+<?php
+
+namespace Tests\Unit;
+
+use App\Rules\ValidPassword;
+use PHPUnit\Framework\TestCase;
+
+class PasswordValidationTest extends TestCase
+{
+    /**
+     * A basic unit test example.
+     *
+     * @return void
+     */
+    //----- part 1
+    public function test_password_should_not_be_less_than_6_character()  //رمز عبور نباید کمتر از ۶ کاراکتر باشد
+    {
+        $result = new ValidPassword();
+        $passes = $result->passes('', '12345');  //1)attributeکدوم اتریبیوت  Two)value مقدار چی هست برای تست
+        $this->assertEquals(0, $passes);
+    }
+
+    public function test_password_should_not_include_sign_character()  //رمز عبور نباید sign (!@#$%^) داشته باشد
+    {
+        $result = new ValidPassword();
+        $passes = $result->passes('', 'A12a25gs4');  //1)attributeکدوم اتریبیوت  Two)value مقدار چی هست برای تست
+        $this->assertEquals(0, $passes);
+    }
 
 
+    public function test_password_should_not_include_digit_character()  //رمز عبور نباید عدد داشته
+    {
+        $result = new ValidPassword();
+        $passes = $result->passes('', 'B!@!asdD');  //1)attributeکدوم اتریبیوت  Two)value مقدار چی هست برای تست
+        $this->assertEquals(0, $passes);
+    }
 
+    public function test_password_should_not_include_capital_character()
+    {
+        $result = (new ValidPassword())->passes('', '12!@AA');
+        $this->assertEquals(0, $result);
+    }
 
-//--------------------
+    public function test_password_should_not_include_small_character()
+    {
+        $result = (new ValidPassword())->passes('', '12!@PIT34$');
+        $this->assertEquals(0, $result);
+    }
+
+}
+
 
 
 
@@ -2099,9 +2145,40 @@ class ValidMobile implements Rule
 
 
 //------------------------------------------------------------------------------- Lesson 32  (transfer User module test)
-1)
-2)
+1) modules/Webamooz/User/Tests/Feature
+2) modules/Webamooz/User/Tests/Unit
 3)
+
+
+//-------------------- modules/Webamooz/User/Tests/Feature/LoginTest.php
+namespace Webamooz\User\Tests\Feature;
+
+
+//-------------------- modules/Webamooz/User/Tests/Unit/MobileValidationTest.php
+namespace Webamooz\User\Tests\Unit;
+
+
+
+//-------------------- phpunit.xml
+<testsuites>
+    <testsuite name="Unit">
+        <directory suffix="Test.php">./tests/Unit</directory>
+    </testsuite>
+    <testsuite name="Feature">
+        <directory suffix="Test.php">./tests/Feature</directory>
+    </testsuite>
+
+    <!-- Test module custom -->
+    <testsuite name="Unit">  <!-- Unit از چه نوع تستی فیچر یا یونیت -->
+        <directory suffix="Test.php">./modules/Webamooz/User/Tests/Feature</directory> <!-- هر تستی که آخرش با این اسم تموم suffix="Test.php" -->
+    </testsuite>
+    <testsuite name="Feature">
+        <directory suffix="Test.php">./modules/Webamooz/User/Tests/Feature</directory> <!-- ./modules/Webamooz/User/Tests/Feature آدرس -->
+    </testsuite>
+</testsuites>
+
+//--------------------
+
 
 
 //--------------------
@@ -2326,6 +2403,32 @@ class ValidMobile implements Rule
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /------------------------------------------------------------------------------------------------------------- IMPORTANT
 1) php artisan migrate:fresh               //table current -> all delete
 2) <link rel="stylesheet" href="/css/style.css?v={{ uniqid() }}">  // اسلش قبل شروع برای خواندن صفحه استایل ها در صفحات دیگر به جز صفحه اصلی
@@ -2348,11 +2451,24 @@ class ValidMobile implements Rule
 …or create a new repository on the command line
 echo "# laravel_module" >> README.md
 git init
-git add README.md
+git add . A -a all
 git commit -m "first commit"
-git branch -M main
+git branch -M main  //or -> git branch -M master
 git remote add origin https://github.com/mahdi99k/laravel_module.git
-git push -u origin main
+git push -u origin main  //or -> git push -u origin master
+
+
+
+
+//------------------------------------------------------------ GIT tag -> Episode
+git status
+git add .
+git status
+git push origin main  //or -> git push origin master
+git tag
+git tag -a v0.1.2 -m "Episode 1"
+git push orogin v0.1.2
+
 
 
 

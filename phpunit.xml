@@ -11,7 +11,16 @@
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
+
+        <!-- Test module custom -->
+        <testsuite name="Unit">  <!-- Unit از چه نوع تستی فیچر یا یونیت -->
+            <directory suffix="Test.php">./modules/Webamooz/User/Tests/Unit</directory> <!-- هر نوع تستی که آخرش با این اسم تموم میشه suffix="Test.php" -->
+        </testsuite>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./modules/Webamooz/User/Tests/Feature</directory> <!-- ./modules/Webamooz/User/Tests/Feature آدرس -->
+        </testsuite>
     </testsuites>
+
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">./app</directory>
