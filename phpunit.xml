@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
+
+        <!-- Test module custom -->
+        <testsuite name="Unit">  <!-- Unit از چه نوع تستی فیچر یا یونیت -->
+            <directory suffix="Test.php">./modules/Webamooz/User/Tests/Unit</directory> <!-- هر نوع تستی که آخرش با این اسم تموم میشه suffix="Test.php" -->
+        </testsuite>
+        <testsuite name="Feature">  <!-- Unit از چه نوع تستی فیچر یا یونیت -->
+            <directory suffix="Test.php">./modules/Webamooz/User/Tests/Feature</directory> <!-- ./modules/Webamooz/User/Tests/Feature آدرس -->
+        </testsuite>
+
+        <testsuite name="Feature">  <!-- Unit از چه نوع تستی فیچر یا یونیت -->
+            <directory suffix="Test.php">./modules/Webamooz/Category/Tests/Feature</directory> <!-- ./modules/Webamooz/User/Tests/Feature آدرس -->
+        </testsuite>
+
+        <testsuite name="Feature">  <!-- Unit از چه نوع تستی فیچر یا یونیت -->
+            <directory suffix="Test.php">./modules/Webamooz/Course/Tests/Feature</directory> <!-- ./modules/Webamooz/User/Tests/Feature آدرس -->
+        </testsuite>
+
+        <testsuite name="Feature">  <!-- Unit از چه نوع تستی فیچر یا یونیت -->
+            <directory suffix="Test.php">./modules/Webamooz/RolePermissions/Tests/Feature</directory> <!-- ./modules/Webamooz/User/Tests/Feature آدرس -->
+        </testsuite>
+
+        <testsuite name="Feature">  <!-- Unit از چه نوع تستی فیچر یا یونیت -->
+            <directory suffix="Test.php">./modules/Webamooz/Ticket/Tests/Feature</directory> <!-- ./modules/Webamooz/User/Tests/Feature آدرس -->
+        </testsuite>
+
+        <testsuite name="Feature">  <!-- Unit از چه نوع تستی فیچر یا یونیت -->
+            <directory suffix="Test.php">./modules/Webamooz/Comment/Tests/Feature</directory> <!-- ./modules/Webamooz/User/Tests/Feature آدرس -->
+        </testsuite>
+    </testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./app</directory>
+        </include>
+    </coverage>
+    <php>
+        <env name="APP_ENV" value="testing"/>  <!-- create file -> .env.testing -> .env.(value="testing")  -->
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="MAIL_MAILER" value="smtp"/>  <!-- value="array"  |  smtp برای ارسال ایمیل در حالت تست میزنیم روی -->
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+    </php>
+</phpunit>

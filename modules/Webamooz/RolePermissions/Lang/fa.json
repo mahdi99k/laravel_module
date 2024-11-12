@@ -1,0 +1,16 @@
+{
+    "manage categories" : "میدیریت دسته بندی ها",
+    "manage courses" : "میدیریت دوره ها",
+    "manage users" : "میدیریت کاربران",
+    "manage own courses" : "میدیریت دوره های من",
+    "manage role_permissions" : "مدیریت نقش",
+    "manage payments" : "مدیریت تراکنش ها",
+    "manage settlements" : "مدیریت درخواست های تسویه",
+    "manage discounts" : "مدیریت تخفیف ها",
+    "manage tickets" : "مدیریت تیکت ها",
+    "teach" : "تدریس",
+    "super admin" : "مدیر کل",
+    "student" : "دانشجو",
+    "teacher" : "مدرس"
+
+}
